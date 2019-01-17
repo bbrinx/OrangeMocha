@@ -1,0 +1,16 @@
+{
+  "name": "OrangeMocha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tslint **/*.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.2"
+  }
+}
