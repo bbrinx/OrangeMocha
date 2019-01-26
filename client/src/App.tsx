@@ -1,20 +1,22 @@
-import * as React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import logo from './logo.svg';
+import HomeContainer from './containers/HomeContainer';
+import LoginContainer from './containers/LoginContainer';
+import SignupContainer from './containers/SignupContainer';
 
-class App extends React.Component {
+import './App.scss';
+
+class App extends Component {
   public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>client/App.tsx</code> and save to reload.
-        </p>
-      </div>
+    return(
+      <Router>
+        <div>
+          <Route path='/' exact component={HomeContainer} />
+          <Route path='/signup/' exact component={SignupContainer} />
+          <Route path='/login/' exact component={LoginContainer} />
+        </div>
+      </Router>
     );
   }
 }

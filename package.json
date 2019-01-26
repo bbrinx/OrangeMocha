@@ -1,16 +1,25 @@
 {
-  "name": "OrangeMocha",
+  "name": "orangemocha",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "tslint **/*.ts"
+    "lint": "tslint **/*.ts",
+    "client": "cd client && npm run start",
+    "server": "cd server && npm run start",
+    "start": "concurrently \"npm run server\" \"npm run client\"" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/mongodb": "^3.1.19",
+    "@types/mongoose": "^5.3.8",
     "tslint": "^5.12.1",
     "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "mongoose": "^5.4.6"
   }
 }

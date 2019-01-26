@@ -1,20 +1,12 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import './index.scss';
+import * as serviceWorker from './serviceWorker';
 
-fetch('/api/getList')
-  .then(res => res.json())
-  .then((body) => {
-    console.log(body);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+ReactDOM.render(<App />, document.getElementById('root'));
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-);
-registerServiceWorker();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();

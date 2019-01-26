@@ -1,0 +1,73 @@
+$main_color: #EEAE1C;
+$secondary_color: #1C265E;
+$tertiary_color: #444444;
+
+.main {
+  height: 100vh;
+  background-color: $main_color;
+  .content {
+    position: relative;
+  }
+}
+
+.landing {
+  padding: 5%;
+  top: 30%;
+  .intro {
+    max-width: 66%;
+    color: $secondary_color;
+    p {
+      font-size: 24px;
+    }
+  }
+  .callToAction {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    a {
+      font-size: 24px;
+      color: #fff;
+      display: block;
+    }
+  }
+}
+
+.signup {
+  display: flex;
+  .card {
+    height: 100vh;
+    flex: 1;
+    &.left {
+      color: #fff;
+      background-color: $tertiary_color;
+    }
+    &.right {
+      text-align: center;
+      h2 {
+        display: inline-block;
+        line-height: 1.5em;
+        border-bottom: 5px solid;
+      }
+    }
+  }
+  .signup-form {
+    position: relative;
+    top: 30%;
+    width: 66%;
+    margin: 0 auto;
+    input {
+      font-size: 14px;
+      color: $tertiary_color;
+    }
+    input[type=submit] {
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: blue;
+      border: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
