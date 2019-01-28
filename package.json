@@ -7,7 +7,7 @@
     "lint": "tslint **/*.ts",
     "client": "cd client && npm run start",
     "server": "cd server && npm run start",
-    "start": "concurrently \"npm run server\" \"npm run client\"" 
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "concurrently": "^4.1.0",
-    "mongoose": "^5.4.6"
+    "mongoose": "^5.4.6",
+    "typesafe-actions": "^3.0.0",
+    "utility-types": "^3.4.1"
   }
 }

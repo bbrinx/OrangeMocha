@@ -1,16 +1,16 @@
 import { Field, Form, FormikErrors, FormikProps, withFormik } from 'formik';
 import React from 'react';
 
-interface IFormValues {
+interface FormValues {
   email: string;
   password: string;
 }
 
-interface IOtherProps {
+interface OtherProps {
   message: string;
 }
 
-const InnerForm = (props: IOtherProps & FormikProps<IFormValues>) => {
+const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
   const { touched, errors, isSubmitting, message } = props;
   return (
     <Form>
@@ -26,25 +26,22 @@ const InnerForm = (props: IOtherProps & FormikProps<IFormValues>) => {
   );
 };
 
-interface IMyFormProps {
+interface SignUpFormProps {
   initialEmail?: string;
-  message: string;
+  message?: string;
 }
 
-interface IMyFormProps {
-  initialEmail?: string;
-  message: string;
-}
+const SignUpForm = withFormik<SignUpFormProps, FormValues>({
 
-const MyForm = withFormik<IMyFormProps, IFormValues>({
   mapPropsToValues: (props) => {
     return {
       email: props.initialEmail || '',
       password: '',
+      setAuthToken: props.setAuthToken,
     };
   },
 
-  validate: (values: IFormValues) => {
+  validate: (values: FormValues) => {
     const errors: FormikErrors<any> = {};
     if (!values.email) {
       errors.email = 'Required';
@@ -52,9 +49,9 @@ const MyForm = withFormik<IMyFormProps, IFormValues>({
     return errors;
   },
 
-  handleSubmit: (values) => {
-    console.log('values', values);
+  handleSubmit: async (props, values) => {
+    //
   },
 })(InnerForm);
 
-export default MyForm;
+export default SignUpForm;
