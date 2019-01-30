@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import store from './state/config';
+import configureStore from './state/config';
 
 import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
@@ -11,16 +11,12 @@ import SignupContainer from './containers/SignupContainer';
 import './App.scss';
 
 import { ImplicitCallback, Security } from '@okta/okta-react';
-
-const config = {
-  client_id: process.env.REACT_APP_CLIENT_ID,
-  issuer: `https://${process.env.REACT_APP_OKTA_DOMAIN}/oauth2/default`,
-  redirect_uri: window.location.origin + '/implicit/callback',
-};
+import config from './app.config';
 
 class App extends Component {
   public render() {
     // This is only used to show us the store state on every dispatch
+    const store = configureStore();
     const initial = store.getState();
     console.log('Initial: ', initial);
     let changeCounter = 0;

@@ -1,3 +1,5 @@
+import OktaAuth from '@okta/okta-auth-js';
+import { withAuth } from '@okta/okta-react';
 import { Field, Form, FormikErrors, FormikProps, withFormik } from 'formik';
 import React from 'react';
 
@@ -7,7 +9,7 @@ interface FormValues {
 }
 
 interface OtherProps {
-  message: string;
+  message?: string;
 }
 
 const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
@@ -29,6 +31,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
 interface SignUpFormProps {
   initialEmail?: string;
   message?: string;
+  handleSubmit: (email: string, password: string) => any;
 }
 
 const SignUpForm = withFormik<SignUpFormProps, FormValues>({
@@ -37,7 +40,6 @@ const SignUpForm = withFormik<SignUpFormProps, FormValues>({
     return {
       email: props.initialEmail || '',
       password: '',
-      setAuthToken: props.setAuthToken,
     };
   },
 
@@ -49,8 +51,8 @@ const SignUpForm = withFormik<SignUpFormProps, FormValues>({
     return errors;
   },
 
-  handleSubmit: async (props, values) => {
-    //
+  handleSubmit: async (values, {props}) => {
+    props.handleSubmit(values.email, values.password);
   },
 })(InnerForm);
 

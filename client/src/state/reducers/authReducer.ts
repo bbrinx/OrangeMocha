@@ -1,29 +1,32 @@
-import { AuthActions } from '../actions';
+import { Reducer } from 'redux';
+import { AuthActionTypes } from '../actions';
 
 export interface AuthState {
-  token: string;
+  sessionToken: string;
   errorMessage?: string;
 }
 
+const initialState: AuthState = {
+  sessionToken: '',
+};
+
 export function defaulAuthState() {
   return {
-    token: '',
+    sessionToken: '',
   };
 }
 
-export default function authReducer(state: AuthState = defaulAuthState(), action: AuthActions): AuthState {
+const reducer: Reducer<AuthState> = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_AUTH_TOKEN':
-      return {
-        ...state,
-        token: action.token,
-      };
-    case 'SET_AUTH_TOKEN_ERROR':
-      return {
-        ...state,
-        errorMessage: action.errorMessage,
-      };
-    default:
-    return state;
+    case AuthActionTypes.SET_AUTH_TOKEN: {
+      return { ...state, sessionToken: action.payload };
+    }
+    case AuthActionTypes.SET_AUTH_TOKEN_ERROR: {
+      return { ...state, errorMessage: action.payload };
+    }
+    default: {
+      return state;
+    }
   }
-}
+};
+export { reducer as authReducer };

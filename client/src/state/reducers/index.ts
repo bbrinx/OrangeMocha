@@ -1,4 +1,10 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
+import { authReducer, AuthState } from './authReducer';
 
-export default combineReducers({authReducer});
+export interface ApplicationState {
+  auth: AuthState;
+}
+
+export const rootReducer = combineReducers<ApplicationState>({
+  auth: authReducer,
+});
