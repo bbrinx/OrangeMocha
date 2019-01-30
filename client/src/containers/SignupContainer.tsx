@@ -43,12 +43,9 @@ class SignupContainer extends Component<Props, {}> {
         method: 'POST',
       });
       const response = await this.oktaAuth.signIn({username: email, password});
-      await this.props.setAuthToken(response.sessionToken);
-      const test = this.props.sessionToken;
-      return true;
+      this.props.setAuthToken(response.sessionToken);
     } catch (err) {
       console.log('Found an error', err);
-      return false;
     }
   }
 }
